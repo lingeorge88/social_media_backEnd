@@ -30,7 +30,7 @@ app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors({
-  origin: 'https://gatherly-88.netlify.app/' // Update with your Netlify domain
+  origin: 'https://social-media-frontend-xak0.onrender.com'
 }));
 // app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
