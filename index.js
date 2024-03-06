@@ -29,8 +29,10 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
-app.use("/assets", express.static(path.join(__dirname, "public/assets")));
+app.use(cors({
+  origin: 'https://gatherly-88.netlify.app/' // Update with your Netlify domain
+}));
+// app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 /* FILE STORAGE */
 const storage = multer.diskStorage({
@@ -56,9 +58,9 @@ app.use("/posts", postRoutes);
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 /* SEND REQUESTS THAT DOESN'T MATCH ONE OF THE ABOVE BACK TO REACT'S INDEX.HTML FILE */
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// });
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
